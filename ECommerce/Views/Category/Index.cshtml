@@ -1,0 +1,19 @@
+﻿@model Category
+@{await Html.RenderPartialAsync("_Partial_Categories");}
+
+<p>
+    <a href="@Url.Action("Index", "Home")">Anasayfa</a>
+</p>
+
+<h2>@Model.Name</h2>
+<p>@Model.Description</p>
+
+
+<form>
+    <input type="number" id="CategoryId" />
+   <input type ="text" id="ProductName" />
+   <input type ="button" value="kaydet" onclick="ECommerce.Page.Category.Save()" />
+</form>
+
+
+

@@ -4,14 +4,16 @@ using ECommerce;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    partial class ECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20190727122547_x")]
+    partial class x
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,13 +81,9 @@ namespace ECommerce.Migrations
                         .IsRequired()
                         .HasMaxLength(120);
 
-                    b.Property<int>("categoryId");
-
                     b.Property<int>("stateId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("categoryId");
 
                     b.HasIndex("stateId");
 
@@ -152,11 +150,6 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("ECommerce.Models.Product", b =>
                 {
-                    b.HasOne("ECommerce.Models.Category", "category")
-                        .WithMany()
-                        .HasForeignKey("categoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ECommerce.Models.State", "state")
                         .WithMany()
                         .HasForeignKey("stateId")
