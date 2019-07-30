@@ -4,14 +4,16 @@ using ECommerce;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    partial class ECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20190727072434_State")]
+    partial class State
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -62,34 +64,6 @@ namespace ECommerce.Migrations
                         new { Id = 2, Description = "Mutfak elektroniği.", Name = "Beyaz Eşya" },
                         new { Id = 3, Description = "Gardropunuzu biz dolduruyoruz.", Name = "Tekstil" }
                     );
-                });
-
-            modelBuilder.Entity("ECommerce.Models.Product", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int>("CategoryId");
-
-                    b.Property<DateTime>("CreateDate");
-
-                    b.Property<string>("Description")
-                        .IsRequired();
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasMaxLength(120);
-
-                    b.Property<int>("StateId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
-
-                    b.HasIndex("StateId");
-
-                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("ECommerce.Models.State", b =>
@@ -148,19 +122,6 @@ namespace ECommerce.Migrations
                     b.HasOne("ECommerce.Models.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId");
-                });
-
-            modelBuilder.Entity("ECommerce.Models.Product", b =>
-                {
-                    b.HasOne("ECommerce.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
-                    b.HasOne("ECommerce.Models.State", "State")
-                        .WithMany()
-                        .HasForeignKey("StateId")
-                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

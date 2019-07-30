@@ -4,14 +4,16 @@ using ECommerce;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    partial class ECommerceContextModelSnapshot : ModelSnapshot
+    [Migration("20190727121853_Product")]
+    partial class Product
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -70,8 +72,6 @@ namespace ECommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryId");
-
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("Description")
@@ -84,8 +84,6 @@ namespace ECommerce.Migrations
                     b.Property<int>("StateId");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CategoryId");
 
                     b.HasIndex("StateId");
 
@@ -152,11 +150,6 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("ECommerce.Models.Product", b =>
                 {
-                    b.HasOne("ECommerce.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-
                     b.HasOne("ECommerce.Models.State", "State")
                         .WithMany()
                         .HasForeignKey("StateId")

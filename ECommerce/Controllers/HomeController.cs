@@ -11,17 +11,13 @@ namespace ECommerce.Controllers
     {
         public IActionResult Index()
         {
-
-            ViewData["Title"] = "HOŞGELDİNİZ";
+            ViewData["Title"] = "HOŞGELDİNİZ!";
             return View();
         }
+
         public IActionResult Help()
         {
-            ViewData["Title"] = "YARDIM MASASI";
-            return View();
-        }
-        public IActionResult Contact()
-        {
+            ViewData["Title"] = "Yardım Masası!";
             return View();
         }
     }

@@ -7,20 +7,20 @@ namespace ECommerce.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<int>(
-                name: "categoryId",
+                name: "CategoryId",
                 table: "Products",
                 nullable: false,
                 defaultValue: 0);
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_categoryId",
+                name: "IX_Products_CategoryId",
                 table: "Products",
-                column: "categoryId");
+                column: "CategoryId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_Products_Categories_categoryId",
+                name: "FK_Products_Categories_CategoryId",
                 table: "Products",
-                column: "categoryId",
+                column: "CategoryId",
                 principalTable: "Categories",
                 principalColumn: "Id",
                 onDelete: ReferentialAction.Cascade);
@@ -29,15 +29,15 @@ namespace ECommerce.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_Products_Categories_categoryId",
+                name: "FK_Products_Categories_CategoryId",
                 table: "Products");
 
             migrationBuilder.DropIndex(
-                name: "IX_Products_categoryId",
+                name: "IX_Products_CategoryId",
                 table: "Products");
 
             migrationBuilder.DropColumn(
-                name: "categoryId",
+                name: "CategoryId",
                 table: "Products");
         }
     }

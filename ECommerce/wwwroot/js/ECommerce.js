@@ -21,8 +21,8 @@
                     .done(function (msg) {
                         alert("Data Saved: " + msg);
                     });
-            }
 
+            }
         },
         Contact: {
 

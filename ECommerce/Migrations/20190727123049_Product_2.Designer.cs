@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerce.Migrations
 {
     [DbContext(typeof(ECommerceContext))]
-    [Migration("20190727123117_Product_2")]
+    [Migration("20190727123049_Product_2")]
     partial class Product_2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -72,6 +72,8 @@ namespace ECommerce.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CategoryId");
+
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<string>("Description")
@@ -81,15 +83,13 @@ namespace ECommerce.Migrations
                         .IsRequired()
                         .HasMaxLength(120);
 
-                    b.Property<int>("categoryId");
-
-                    b.Property<int>("stateId");
+                    b.Property<int>("StateId");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("categoryId");
+                    b.HasIndex("CategoryId");
 
-                    b.HasIndex("stateId");
+                    b.HasIndex("StateId");
 
                     b.ToTable("Products");
                 });
@@ -154,14 +154,14 @@ namespace ECommerce.Migrations
 
             modelBuilder.Entity("ECommerce.Models.Product", b =>
                 {
-                    b.HasOne("ECommerce.Models.Category", "category")
+                    b.HasOne("ECommerce.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("categoryId")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade);
 
-                    b.HasOne("ECommerce.Models.State", "state")
+                    b.HasOne("ECommerce.Models.State", "State")
                         .WithMany()
-                        .HasForeignKey("stateId")
+                        .HasForeignKey("StateId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

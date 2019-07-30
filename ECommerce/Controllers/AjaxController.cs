@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using System;
+
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Controllers
 {
@@ -12,25 +11,25 @@ namespace ECommerce.Controllers
         public IActionResult Handle()
         {
             string json = HttpContext.Request.Form["JSON"].ToString();
-            DTO.ProductSaveDto categorySave = Newtonsoft.Json.JsonConvert.DeserializeObject<DTO.CategorySaveDto>(json);
-            //newtonsoft json obj kütüphanesini kullandık
-
+            DTO.ProductSaveDto productSave = Newtonsoft.Json.JsonConvert.DeserializeObject<DTO.ProductSaveDto>(json);
 
             using (ECommerceContext eCommerceContext = new ECommerceContext())
             {
                 eCommerceContext.Products.Add(new Models.Product()
                 {
-                    Name =categorySave.ProductName,
+                    Name = productSave.ProductName,
                     Description = "boş",
-                    state = ??,
-                    category= ??,
-                    CreateDate= DateTime.UtcNow,
-
-
-
+                    State = eCommerceContext.States.Single(a => a.Id == (int)Enums.State.Active),
+                    Category = ???,
+                    CreateDate = DateTime.UtcNow,
+                    
                 });
             }
-            return View();
+                //var categorySave = new DTO.CategorySaveDto()
+                //{
+                //    ProductName = json
+                //};
+                return View();
         }
     }
 }
