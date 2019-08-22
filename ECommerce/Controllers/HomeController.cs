@@ -20,5 +20,13 @@ namespace ECommerce.Controllers
             ViewData["Title"] = "Yardım Masası!";
             return View();
         }
+
+        public IActionResult Contact()
+        {
+            ViewData["Title"] = "İletişim";
+            return View();
+        }
+
+
     }
 }

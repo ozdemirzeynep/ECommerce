@@ -1,0 +1,16 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Update";
+}
+
+ID: @Model.Id
+
+<div>
+    <input type="hidden" id="Id" value="@Model.Id" />
+    Ürün Adı: <input type="text" id="Name" value="@Model.Name" /> <br />
+    Açıklaması: <input type="text" id="Description" value="@Model.Description" /> <br />
+    <input type="button" value="Güncelle" onclick="ECommerce.Page.Category.Update();" />
+
+
+</div>
+

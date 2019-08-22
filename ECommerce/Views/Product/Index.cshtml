@@ -1,0 +1,13 @@
+﻿@model  Product
+@{
+    ViewData["Title"] = "Index";
+}
+
+    <div>
+        <input type="hidden" id="Id" />
+        Ürün Adı: @Model.Name <br />
+        Açıklaması: @Model.Description <br />
+
+        <a href="@Url.Action("Update","Product",new { @id=Model.Id})">Ürünü Güncelle</a>
+    </div>
+

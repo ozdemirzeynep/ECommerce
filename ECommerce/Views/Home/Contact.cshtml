@@ -1,0 +1,18 @@
+﻿@model List<Category>
+@{
+    ViewData["Title"] = "Contact";
+}
+
+
+<a href="@Url.Action("Index", "Home")">Anasayfa</a> <br />
+
+
+<div>
+    Adı: <input type="text" id="Name" /><br />
+    Soyadı: <input type="text" id="Surname" /><br />
+    Mesaj:<input type="text" id="Message" /><br />
+    
+    <input type="button" value="Gönder" onclick="ECommerce.Page.Contact.Send();"/>
+</div>
+
+
